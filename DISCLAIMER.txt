@@ -1,0 +1,15 @@
+LEGAL NOTICE & REGISTERED PRIOR ART
+Reference: BOIP i-DEPOT #158616
+Owner: Miklos Peter Snijders
+
+1. NOTICE OF REGISTRATION
+The technical specifications, including the dual-frequency coupling (3.435 THz and 15.3435 MHz) within a Lutetium-Bismuth matrix, are officially recorded with the Benelux Office for Intellectual Property.
+
+2. DEFENSIVE STRATEGY
+This filing serves as a defensive publication. Any attempt by third parties to patent the core mechanics described in this repository will be contested using i-DEPOT #158616 as evidence of prior existence and public disclosure.
+
+3. LIABILITY
+The author (Miklos Peter Snijders) provides this code and documentation "as is." Experimental work involving THz frequencies and quantum transducers should only be performed in controlled laboratory environments.
+
+4. COMMERCIAL INQUIRIES
+Entities seeking industrial application must contact the author to ensure compliance with the Open-Access mission of the Snijders Protocol.
