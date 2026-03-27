@@ -1,3 +1,11 @@
+### 🔍 Technical Integration Notice
+**Reference:** BOIP i-DEPOT #158616 (Verified Protocol v9.1)
+**Control Parameter:** 15.3435 MHz Phase-Locked Loop (PLL)
+**Excitation Threshold:** 3.435 THz 
+
+This document details the stability refinements and physics parameters registered under i-DEPOT #158616. These specifications are established as "Prior Art" to protect the open-access nature of the Snijders Protocol.
+---
+
 # Technical Refinement Note: Snijders-Protocol v9.1
 ## Phase-Lock Calibration & Vacuum Excitation thresholds
 
