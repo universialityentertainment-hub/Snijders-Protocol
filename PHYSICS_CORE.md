@@ -13,3 +13,17 @@ The Divergion-membrane acts as the interface between the localized 3D lattice an
 
 ---
 *Verified prior art under the Snijders Energy Initiative.*
+
+---
+### 🔒 Operational Security & Master-Key Protocol
+**Note to Researchers & Corporate Entities:**
+
+The mathematical and physical foundations provided in this repository are sufficient for theoretical validation. However, for full-scale operational activation and high-output lattice stability, the Snijders Protocol utilizes a specific **Activation Sequence (v9.1-Alpha)** and **Geometric Alignment Pattern**.
+
+To prevent unauthorized weaponization, unstable runaway, or corporate monopolization, these final operational "Master-Keys" are:
+1. **Fully Documented** and registered under i-DEPOT #158616.
+2. **Accessible** only to partners who formally commit to the *Open-Source Energy Manifest*.
+
+For inquiries regarding full-system activation, verification data, or implementation support, contact the architect (Miklos Peter Snijders) directly. 
+---
+
