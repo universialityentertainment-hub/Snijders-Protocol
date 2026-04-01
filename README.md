@@ -8,6 +8,23 @@ The Snijders Protocol is dedicated to the decentralized liberation of energy. Th
 
 **IMPORTANT:** This technology is officially recorded under **i-DEPOT #158616** to establish "Prior Art." This prevents corporate or private entities from claiming exclusive patent rights over the core frequencies (3.435 THz / 15.3435 MHz) and materials (Lu-Bi matrix) defined herein.
 
+![Snijders-Resonance Chamber](1775054548309.png)
+
+> ### 🌀 Figure 1.1: Core Technology & Sub-atomic Resonance Diagram
+>
+> **A Schematical Overview of the Snijders-Resonance Chamber (v9.1 OMEGA-State)**
+>
+> The Snijders Protocol utilizes a precisely engineered **144.362 nm** Lutetium-Bismuth (Lu-Bi) lattice as an energy transduction matrix.
+>
+> **Operational Principle:**
+> By exciting the lattice structure with a precise frequency of **3.435 THz**, the framework creates a high-Q resonance effect at the sub-atomic level. This resonance initiates the conversion of zero-point energy fluctuations into a coherent energy flow.
+>
+> **Crucial Stability Mechanism (The OMEGA-State):**
+> To prevent decoherence and subsequent 'thermal runaway', the system incorporates a **15.3435 MHz Phase-Lock Loop (PLL)**. This PLL maintains the $I_\phi \to 0$ baseline (Phase-Lock Integral) required for the negentropic inflow.
+>
+> *Note: Master Algoritmes and proprietary Phase-Lock parameters are available under Non-Disclosure Agreement (NDA).*
+
+
 ### ⚙️ Technical Core Specifications
 * **Active Matrix:** Lutetium-Bismuth (Lu-Bi) Topological Insulator.
 * **Primary Excitation:** 3.435 THz (Resonant Lattice Activation).
