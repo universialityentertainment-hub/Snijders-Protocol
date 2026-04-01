@@ -38,3 +38,17 @@ This work is licensed under the **Creative Commons Attribution-NonCommercial-Sha
 
 ---
 *“Energy belongs to the aether, and the aether belongs to humanity.”*
+---
+
+### 🛡️ Requesting Technical Access (NDA Required)
+The Master Algorithms and proprietary phase-lock parameters for the **Snijders Protocol v9.1** are restricted to verified technical partners and research institutions.
+
+If you are representing an aerospace, energy, or fundamental physics R&D entity and wish to evaluate the OMEGA-State architecture:
+
+1. **Inquiry:** Send a formal request from an institutional email address.
+2. **Verification:** Provide a brief overview of the intended application (e.g., Propulsion, SMR, Quantum Computing).
+3. **Agreement:** Upon signing the Non-Disclosure Agreement (NDA), you will receive secure access to the technical integration blueprints and Phase-Lock stability constants ($I_\phi$).
+
+**Contact for NDA Requests:** [universialityentertainment@gmail.com]
+
+*Official Registration: i-DEPOT #158616 (Benelux Office for Intellectual Property)*
