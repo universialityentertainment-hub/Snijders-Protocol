@@ -1,3 +1,5 @@
+
+[![DOI](https://zenodo.org/badge/118002250.svg)](https://doi.org/10.5281/zenodo.19371551)
 # 🌌 The Snijders Protocol (v9.1)
 **Official Open-Source Quantum Energy Initiative** **Legal Registration:** BOIP i-DEPOT Reference **#158616** **Date of Filing:** March 26, 2026  
 
