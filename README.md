@@ -1,6 +1,7 @@
 
 [![DOI](https://zenodo.org/badge/118002250.svg)](https://doi.org/10.5281/zenodo.19371551)
 
+
 ​Technical Framework: Phase-Locked Lattice Resonance
 ​This repository serves as the official documentation for the Snijders Protocol (v9.1 OMEGA). The research focuses on stabilizing resonance within a specific Lutetium-Bismuth (Lu-Bi) lattice geometry to achieve a controlled energy state without thermal decoherence.
 ​Key Specifications:
@@ -11,6 +12,7 @@
 ​Research Objective:
 ​The protocol provides a method for locking the phase-integral at a precise geometric constant. This prevents the typical thermal runaway associated with high-frequency lattice stimulation, allowing for stable, sub-atomic resonance patterns.
 ​For peer-review and technical inquiries, please refer to the formally archived PDF in the Zenodo release linked via the DOI badge above.
+
 
 # 🌌 The Snijders Protocol (v9.1)
 **Official Open-Source Quantum Energy Initiative** **Legal Registration:** BOIP i-DEPOT Reference **#158616** **Date of Filing:** March 26, 2026  
