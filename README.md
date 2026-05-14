@@ -24,32 +24,25 @@ This project is officially registered and protected by the Benelux Office for In
 | **Lattice Spacing** | 144.362 nm | Nominal distance for optimal transduction |
 
 ### 3.1 Matrix Engine Configuration & Alignment
-![Snijders Engine Layout](./Snijders_Protocol_Public_Schematics.jpg)
+![Snijders Engine Layout](./Snijders_Protocol_Public_Schematic.png.png)
 
 * **Structural Geometry:** Top-down schematic of the Lu-Bi induction core.
 * **Phase Alignment:** The spatial orientation shown is optimized for the $f_1$ (3.435 THz) excitation path.
+* **Transduction Zones:** Highlighted areas indicate where kinetic-to-electromagnetic conversion is localized.
 
 ## 4. Mathematical Architecture
 The system's integrity is governed by the **Snijders Constant ($S_c$)**:
 $$S_c = \frac{\Phi}{\pi} \times \sqrt{3435}$$
 
 ## 5. Quantum Time Calculator (QTC) & Security
-The operational core uses the **Diamond Shield Algorithm** to eliminate signal noise. Every calculation within the QTC is validated via a SHA-256 integrity hash, ensuring deterministic results.
-
-### 5.1 Key Capabilities
-* **Dynamic Phase-Locking:** Automated synchronization between THz and MHz frequencies.
-* **Thermal Decoherence Mitigation:** Real-time adjustments via the QTC logic.
-* **Cryptographic Validation:** Hash-verified via the Diamond Shield protocol.
+The operational core uses the **Diamond Shield Algorithm** to eliminate signal noise. Every calculation within the QTC is validated via a SHA-256 integrity hash.
 
 ## 6. Project Vision & Origin
 The Snijders Protocol, developed by the **Universiality Entertainment Hub**, bridges the gap between theoretical quantum physics and practical energy transduction.
 
-## 7. Version 10.4 Improvements
-Version 10.4 introduces the **Diamond Shield** integration, moving from theoretical modeling to a hash-verified operational standard.
-
 ---
 
-## 8. Resources & Links
+## 7. Resources & Links
 * [Official Technical Whitepaper (v10.4)](./i-DEPOT%20159912.pdf)
 * [Previous Registration (#158616)](https://www.boip.int)
-* [Implementation Logic (qtc.py)](./validate_protocol.py)
+* [Implementation Logic (validate_protocol.py)](./validate_protocol.py)
