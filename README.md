@@ -24,8 +24,7 @@ This project is officially registered and protected by the Benelux Office for In
 | **Lattice Spacing** | 144.362 nm | Nominal distance for optimal transduction |
 
 ### 3.1 Matrix Engine Configuration & Alignment
-![Snijders Engine Layout](./Snijders_Protocol_Public_Schematic.png.png)
-
+![Snijders Engine Layout](Snijders_Protocol_Public_Schematic.png..png)
 * **Structural Geometry:** Top-down schematic of the Lu-Bi induction core.
 * **Phase Alignment:** The spatial orientation shown is optimized for the $f_1$ (3.435 THz) excitation path.
 
