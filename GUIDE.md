@@ -16,5 +16,8 @@ The Quantum Time Calculator (QTC) v2.2 is designed for high-precision resonance 
 ## Advanced Calibration
 To adjust for different environments, modify the `temp_mk` variable in the script. The engine will dynamically apply the Snijders Expansion Coefficients ($\alpha$ and $\beta$) to maintain the Zumkeller-lock.
 
+​The Mirror Principle:
+This code acts as a 'digital twin' or mirror of the physical Lu-Bi matrix. By running this calculator, the system creates a predictive model of thermal expansion. If the physical sensor data differs from the QTC-calculated frequency, the protocol identifies an entropic breach and initiates a Re-anchoring sequence.
+
 ---
 *Note: Always verify the Sigma-Anchor (14880) before initiating full power transduction.*
