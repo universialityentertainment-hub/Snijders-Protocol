@@ -28,7 +28,6 @@ This project is officially registered and protected by the Benelux Office for In
 
 * **Structural Geometry:** Top-down schematic of the Lu-Bi induction core.
 * **Phase Alignment:** The spatial orientation shown is optimized for the $f_1$ (3.435 THz) excitation path.
-* **Transduction Zones:** Highlighted areas indicate where kinetic-to-electromagnetic conversion is localized.
 
 ## 4. Mathematical Architecture
 The system's integrity is governed by the **Snijders Constant ($S_c$)**:
