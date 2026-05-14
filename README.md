@@ -1,70 +1,43 @@
+# Snijders Protocol v10.4
+**Advanced Quantum-Phase Synchronization in Crystalline Substrates**
 
-[![DOI](https://zenodo.org/badge/118002250.svg)](https://doi.org/10.5281/zenodo.19371551)
+![Snijders Protocol Visual](https://github.com/universialityentertainment-hub/Snijders-Protocol/raw/main/2001.jpg)
 
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+[![BOIP i-DEPOT](https://img.shields.io/badge/BOIP%20i--DEPOT-159912%20%26%20158616-blue)](https://www.boip.int)
 
-​Technical Framework: Phase-Locked Lattice Resonance
-​This repository serves as the official documentation for the Snijders Protocol (v9.1 OMEGA). The research focuses on stabilizing resonance within a specific Lutetium-Bismuth (Lu-Bi) lattice geometry to achieve a controlled energy state without thermal decoherence.
-​Key Specifications:
-​Lattice Constant: 144.362 nm spatial geometry.
-​Primary Frequency: 3.435 THz excitation.
-​Control Mechanism: 15.3435 MHz Phase-Lock Loop (PLL).
-​Stability Goal: Maintaining the Phase-Lock Integral (I_\phi \to 0) to reach the "OMEGA-state".
-​Research Objective:
-​The protocol provides a method for locking the phase-integral at a precise geometric constant. This prevents the typical thermal runaway associated with high-frequency lattice stimulation, allowing for stable, sub-atomic resonance patterns.
-​For peer-review and technical inquiries, please refer to the formally archived PDF in the Zenodo release linked via the DOI badge above.
+## 1. Executive Summary
+The Snijders Protocol is a registered technical framework defining the methodology for stabilizing energy transduction within a Lutetium-Bismuth (Lu-Bi) matrix. By utilizing the specific resonance of topological insulators, the protocol enables the conversion of kinetic potential into coherent electromagnetic output.
 
+## 2. Intellectual Property Status
+This project is officially registered and protected by the Benelux Office for Intellectual Property (BOIP).
+* **Technical Update v10.4:** i-DEPOT #159912 (Registered: 14-05-2026)
+* **Original Foundation:** i-DEPOT #158616
+* **Reference:** SNIJDERS-V10.4-QTC-TRANS
 
-# 🌌 The Snijders Protocol (v9.1)
-**Official Open-Source Quantum Energy Initiative** **Legal Registration:** BOIP i-DEPOT Reference **#158616** **Date of Filing:** March 26, 2026  
+## 3. Core Technical Specifications
+| Parameter | Value | Description |
+| :--- | :--- | :--- |
+| **Primary Frequency ($f_1$)** | 3.435 THz | Excitation of spin-polarized surface states |
+| **Secondary Frequency ($f_2$)** | 15.3435 MHz | Stabilization and magnetic confinement |
+| **Matrix Material** | Lu-Bi | Lutetium-Bismuth (3:4:3:5 atomic ratio) |
+| **Lattice Spacing** | 144.362 nm | Nominal distance for optimal transduction |
 
----
+## 4. Mathematical Architecture
+The system's integrity is governed by the **Snijders Constant ($S_c$)**:
+$$S_c = \frac{\Phi}{\pi} \times \sqrt{3435}$$
+Where $\Phi \approx 1.618$ (Golden Ratio) and $\pi \approx 3.141$. The stabilization logic ensures that the ratio $f_1 / (f_2 \times \Phi^k)$ remains constant to prevent thermal decoherence and maintain the phase-lock.
 
-### 🛡️ Mission & Legal Protection
-The Snijders Protocol is dedicated to the decentralized liberation of energy. This repository contains the unified 3435-Physics framework utilizing Zumkeller-Balance and Counterspace Divergion for zero-point energy extraction and cellular negentropy.
-
-**IMPORTANT:** This technology is officially recorded under **i-DEPOT #158616** to establish "Prior Art." This prevents corporate or private entities from claiming exclusive patent rights over the core frequencies (3.435 THz / 15.3435 MHz) and materials (Lu-Bi matrix) defined herein.
-
-![Snijders-Resonance Chamber](1775054548309.png)
-
-> ### 🌀 Figure 1.1: Core Technology & Sub-atomic Resonance Diagram
->
-> **A Schematical Overview of the Snijders-Resonance Chamber (v9.1 OMEGA-State)**
->
-> The Snijders Protocol utilizes a precisely engineered **144.362 nm** Lutetium-Bismuth (Lu-Bi) lattice as an energy transduction matrix.
->
-> **Operational Principle:**
-> By exciting the lattice structure with a precise frequency of **3.435 THz**, the framework creates a high-Q resonance effect at the sub-atomic level. This resonance initiates the conversion of zero-point energy fluctuations into a coherent energy flow.
->
-> **Crucial Stability Mechanism (The OMEGA-State):**
-> To prevent decoherence and subsequent 'thermal runaway', the system incorporates a **15.3435 MHz Phase-Lock Loop (PLL)**. This PLL maintains the $I_\phi \to 0$ baseline (Phase-Lock Integral) required for the negentropic inflow.
->
-> *Note: Master Algoritmes and proprietary Phase-Lock parameters are available under Non-Disclosure Agreement (NDA).*
-
-
-### ⚙️ Technical Core Specifications
-* **Active Matrix:** Lutetium-Bismuth (Lu-Bi) Topological Insulator.
-* **Primary Excitation:** 3.435 THz (Resonant Lattice Activation).
-* **Stabilization Buffer:** 15.3435 MHz (Phase-Locked Loop / Thermal Control).
-* **Objective:** Non-thermal, fuel-free energy transduction.
-
-### 📜 Licensing
-This work is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**.
-* **Personal/Academic Use:** Fully encouraged and free.
-* **Commercial Use:** Requires formal agreement to ensure compliance with the Open-Access mission.
+## 5. Quantum Time Calculator (QTC) & Security
+The operational core uses the **Diamond Shield Algorithm** to eliminate signal noise. Every calculation within the QTC is validated via a SHA-256 integrity hash, ensuring deterministic results in high-entropy environments.
 
 ---
-*“Energy belongs to the aether, and the aether belongs to humanity.”*
----
 
-### 🛡️ Requesting Technical Access (NDA Required)
-The Master Algorithms and proprietary phase-lock parameters for the **Snijders Protocol v9.1** are restricted to verified technical partners and research institutions.
+## 6. Project Vision & Origin
+The Snijders Protocol originated from the Universiality Entertainment Hub. It represents a bridge between theoretical quantum mechanics and practical energy stabilization models.
 
-If you are representing an aerospace, energy, or fundamental physics R&D entity and wish to evaluate the OMEGA-State architecture:
+![Matrix Layout](https://github.com/universialityentertainment-hub/Snijders-Protocol/raw/main/2002.jpg)
 
-1. **Inquiry:** Send a formal request from an institutional email address.
-2. **Verification:** Provide a brief overview of the intended application (e.g., Propulsion, SMR, Quantum Computing).
-3. **Agreement:** Upon signing the Non-Disclosure Agreement (NDA), you will receive secure access to the technical integration blueprints and Phase-Lock stability constants ($I_\phi$).
-
-**Contact for NDA Requests:** [universialityentertainment@gmail.com]
-
-*Official Registration: i-DEPOT #158616 (Benelux Office for Intellectual Property)*
+## 7. Resources & Links
+* [Official Technical Whitepaper (v10.4)](https://github.com/universialityentertainment-hub/Snijders-Protocol/blob/main/Snijders_Protocol_v10_4_Technical_Whitepaper.pdf)
+* [Previous Registration (#158616)](https://www.boip.int)
