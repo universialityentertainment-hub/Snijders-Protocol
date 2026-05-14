@@ -1,7 +1,7 @@
 # Snijders Protocol v10.4
 **Advanced Quantum-Phase Synchronization in Crystalline Substrates**
 
-![Snijders Protocol Visual](./2001.jpg)
+![Snijders Protocol Visual](./1775054548309.png)
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 [![BOIP i-DEPOT](https://img.shields.io/badge/BOIP%20i--DEPOT-159912%20%26%20158616-blue)](https://www.boip.int)
@@ -24,7 +24,7 @@ This project is officially registered and protected by the Benelux Office for In
 | **Lattice Spacing** | 144.362 nm | Nominal distance for optimal transduction |
 
 ### 3.1 Matrix Engine Configuration & Alignment
-![Snijders Engine Layout](./2002.jpg)
+![Snijders Engine Layout](./Snijders_Protocol_Public_Schematics.jpg)
 
 * **Structural Geometry:** Top-down schematic of the Lu-Bi induction core.
 * **Phase Alignment:** The spatial orientation shown is optimized for the $f_1$ (3.435 THz) excitation path.
@@ -52,4 +52,4 @@ Version 10.4 introduces the **Diamond Shield** integration, moving from theoreti
 ## 8. Resources & Links
 * [Official Technical Whitepaper (v10.4)](./i-DEPOT%20159912.pdf)
 * [Previous Registration (#158616)](https://www.boip.int)
-* [Implementation Logic (qtc.py)](./qtc.py)
+* [Implementation Logic (qtc.py)](./validate_protocol.py)
