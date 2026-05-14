@@ -1,0 +1,49 @@
+# =================================================================
+# SNIJDERS OMEGA PROTOCOL - QUANTUM TIME CALCULATOR (QTC) v2.2
+# Master Build - Diamond Grade Stability
+# Registered under i-DEPOT 159912 (BOIP)
+# =================================================================
+
+from decimal import Decimal, getcontext
+import hashlib
+
+# 1. PRECISION CONFIGURATION (Diamond Shield)
+# We set precision to 70 decimals to eliminate rounding-induced temporal drift.
+getcontext().prec = 70
+
+class SnijdersOmegaEngine:
+    def __init__(self):
+        self.base_resonance = Decimal('9450.0000000000000000000000000000000000000000000000000000000000000000000000')
+        self.sigma_anchor = 14880  # Mathematical proof: sigma(9450) = 14880
+
+    def calculate_frequency_lock(self, temp_mk):
+        """
+        Calculates the resonance compensation for thermal expansion.
+        Args: temp_mk (Decimal): Temperature in Milli-Kelvin
+        """
+        temp = Decimal(str(temp_mk))
+        # Snijders Expansion Coefficients
+        alpha = Decimal('1.44362e-9')
+        beta = Decimal('3.435e-12')
+        
+        # Quadratic Expansion Compensation
+        drift = 1 + (alpha * temp) + (beta * (temp ** 2))
+        target_f = self.base_resonance / drift
+        
+        return target_f
+
+    def verify_harshad_status(self, value):
+        """Validates if the integer part of the frequency meets the Harshad Criterion."""
+        int_val = int(value)
+        digit_sum = sum(int(d) for d in str(int_val))
+        return int_val % digit_sum == 0
+
+# --- INITIALIZATION ---
+engine = SnijdersOmegaEngine()
+current_temp = 529  # Target test temperature
+final_f = engine.calculate_frequency_lock(current_temp)
+
+print(f"--- Snijders Omega QTC v2.2 ---")
+print(f"Target Frequency: {final_f} Hz")
+print(f"Harshad Stability: {'LOCKED' if engine.verify_harshad_status(final_f) else 'DRIFT DETECTED'}")
+print(f"Integrity Hash: {hashlib.sha256(str(final_f).encode()).hexdigest()}")
