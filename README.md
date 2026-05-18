@@ -55,26 +55,20 @@ Standard thermodynamics models assume passive environmental decoherence. The Sni
 
 ---
 
+---
+
 ## 8. Interactive High-Precision Python Core Engine
 
-Below is the complete source architecture for the v11.2 Omega interactive simulation and validation core. This standalone implementation is optimized for execution within mobile environments (such as Pydroid 3) and standard desktop setups.
+Below is the complete, production-ready source architecture for the v11.2 Omega interactive simulation and validation core. This standalone implementation is optimized for flawless execution within mobile environments (such as Pydroid 3) and standard desktop setups.
 
-    """
-    Snijders Omega Protocol v11.2
-    Component: Full High-Precision Compute Core & Multi-Vector Validation Interface
-    Classification: Registered Specification - v11.2-SPEC-OMEGA-FINAL
-    Author: Miklos Peter Snijders
-    Environment: Pydroid 3 / Python 3
-    """
-
-
+```python
 import decimal
 import time
 
-# Stel de rekenprecisie in op 70 decimalen
+# Set high-precision compute workspace to 70 decimals
 decimal.getcontext().prec = 70
 
-# Vaste parameters voor het Snijders Omega Protocol v11.2
+# Static parameters for the Snijders Omega Protocol v11.2
 ZUMKELLER_ANCHOR = 9450
 TOTAL_SIGMA_SUM = decimal.Decimal('14880')
 TARGET_PARTITION_SUM = decimal.Decimal('7440')
@@ -238,17 +232,3 @@ def main_menu():
 
 if __name__ == "__main__":
     main_menu()
-
-
-    
-## 9. Verification & Testing
-To execute the validation matrix:
-1. Copy the embedded source script directly into your local execution interface or mobile **Pydroid 3** application.
-2. Execute the initialization vector to launch the interactive management interface.
-3. Select operational profiles `2` or `3` to perform manual audits against real-time node strings.
-
----
-*Copyright © 2026 Miklos Peter Snijders. All rights reserved. Registered specification framework.*
-
----
-© 2026 Miklos Peter Snijders. Universiality Entertainment Hub. Technical Integrity. Distributed Consensus. Quantum Innovation.
