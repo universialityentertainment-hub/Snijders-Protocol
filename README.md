@@ -67,180 +67,180 @@ Below is the complete source architecture for the v11.2 Omega interactive simula
     Environment: Pydroid 3 / Python 3
     """
 
-    import decimal
-    import time
 
-    # Set high-precision compute workspace to 70 decimals
-    decimal.getcontext().prec = 70
+import decimal
+import time
 
-    class SnijdersOmegaEngineV112:
-        def __init__(self):
-            self.ZUMKELLER_ANCHOR = 9450
-            self.TOTAL_SIGMA_SUM = decimal.Decimal('14880')
-            self.TARGET_PARTITION_SUM = decimal.Decimal('7440')
-            self.COS_THETA_TARGET = decimal.Decimal('-1') / decimal.Decimal('3')
-            self.RAD_TO_DEG_FACTOR = decimal.Decimal('180') / decimal.Decimal('3.141592653589793238462643383279502884197169399375105820974944592307816')
+# Stel de rekenprecisie in op 70 decimalen
+decimal.getcontext().prec = 70
 
-        def calculate_taylor_cos(self, x_radians, terms=50):
-            x_dec = decimal.Decimal(str(x_radians))
-            cos_val = decimal.Decimal('0')
-            for n in range(terms):
-                sign = decimal.Decimal('-1') if n % 2 != 0 else decimal.Decimal('1')
-                power = x_dec ** (2 * n)
-                factorial = decimal.Decimal(str(self._factorial(2 * n)))
-                cos_val += (sign * power) / factorial
-            return cos_val
+# Vaste parameters voor het Snijders Omega Protocol v11.2
+ZUMKELLER_ANCHOR = 9450
+TOTAL_SIGMA_SUM = decimal.Decimal('14880')
+TARGET_PARTITION_SUM = decimal.Decimal('7440')
+RAD_TO_DEG_FACTOR = decimal.Decimal('180') / decimal.Decimal('3.141592653589793238462643383279502884197169399375105820974944592307816')
 
-        def calculate_taylor_sin(self, x_radians, terms=50):
-            x_dec = decimal.Decimal(str(x_radians))
-            sin_val = decimal.Decimal('0')
-            for n in range(terms):
-                sign = decimal.Decimal('-1') if n % 2 != 0 else decimal.Decimal('1')
-                power = x_dec ** (2 * n + 1)
-                factorial = decimal.Decimal(str(self._factorial(2 * n + 1)))
-                sin_val += (sign * power) / factorial
-            return sin_val
+def _factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
 
-        def calculate_high_precision_sqrt(self, value):
-            v_dec = decimal.Decimal(str(value))
-            if v_dec == 0:
-                return decimal.Decimal('0')
-            x = v_dec / decimal.Decimal('2')
-            for _ in range(100):
-                next_x = decimal.Decimal('0.5') * (x + v_dec / x)
-                if next_x == x:
-                    break
-                x = next_x
-            return x
+def calculate_taylor_cos(x_radians, terms=50):
+    x_dec = decimal.Decimal(str(x_radians))
+    cos_val = decimal.Decimal('0')
+    for n in range(terms):
+        sign = decimal.Decimal('-1') if n % 2 != 0 else decimal.Decimal('1')
+        power = x_dec ** (2 * n)
+        factorial = decimal.Decimal(str(_factorial(2 * n)))
+        cos_val += (sign * power) / factorial
+    return cos_val
 
-        def _factorial(self, n):
-            if n == 0 or n == 1:
-                return 1
-            result = 1
-            for i in range(2, n + 1):
-                result *= i
-            return result
+def calculate_taylor_sin(x_radians, terms=50):
+    x_dec = decimal.Decimal(str(x_radians))
+    sin_val = decimal.Decimal('0')
+    for n in range(terms):
+        sign = decimal.Decimal('-1') if n % 2 != 0 else decimal.Decimal('1')
+        power = x_dec ** (2 * n + 1)
+        factorial = decimal.Decimal(str(_factorial(2 * n + 1)))
+        sin_val += (sign * power) / factorial
+    return sin_val
 
-        def verify_node_load_balance(self, active_node_weights):
-            total_weight = sum(decimal.Decimal(str(w).strip()) for w in active_node_weights)
-            is_stable = (total_weight == self.TARGET_PARTITION_SUM)
-            deviation = total_weight - self.TARGET_PARTITION_SUM
-            discrepancy_percentage = (deviation.copy_abs() / self.TOTAL_SIGMA_SUM) * decimal.Decimal('100')
-            return is_stable, total_weight, deviation, discrepancy_percentage
+def calculate_high_precision_sqrt(value):
+    v_dec = decimal.Decimal(str(value))
+    if v_dec == 0:
+        return decimal.Decimal('0')
+    x = v_dec / decimal.Decimal('2')
+    for _ in range(100):
+        next_x = decimal.Decimal('0.5') * (x + v_dec / x)
+        if next_x == x:
+            break
+        x = next_x
+    return x
 
-        def compute_diamond_rotation(self, x_base, y_base, delta_theta_rad):
-            x_b = decimal.Decimal(str(x_base))
-            y_b = decimal.Decimal(str(y_base))
-            cos_dt = self.calculate_taylor_cos(delta_theta_rad)
-            sin_dt = self.calculate_taylor_sin(delta_theta_rad)
-            x_corrected = (x_b * cos_dt) - (y_b * sin_dt)
-            y_corrected = (x_b * sin_dt) + (y_b * cos_dt)
-            return x_corrected, y_corrected
+def verify_node_load_balance(active_node_weights):
+    total_weight = sum(decimal.Decimal(str(w).strip()) for w in active_node_weights)
+    is_stable = (total_weight == TARGET_PARTITION_SUM)
+    deviation = total_weight - TARGET_PARTITION_SUM
+    discrepancy_percentage = (deviation.copy_abs() / TOTAL_SIGMA_SUM) * decimal.Decimal('100')
+    return is_stable, total_weight, deviation, discrepancy_percentage
 
-        def calculate_mesh_distance_vector(self, x1, y1, x2, y2):
-            dx = decimal.Decimal(str(x2)) - decimal.Decimal(str(x1))
-            dy = decimal.Decimal(str(y2)) - decimal.Decimal(str(y1))
-            distance_squared = (dx ** 2) + (dy ** 2)
-            return self.calculate_high_precision_sqrt(distance_squared)
+def compute_diamond_rotation(x_base, y_base, delta_theta_rad):
+    x_b = decimal.Decimal(str(x_base))
+    y_b = decimal.Decimal(str(y_base))
+    cos_dt = calculate_taylor_cos(delta_theta_rad)
+    sin_dt = calculate_taylor_sin(delta_theta_rad)
+    x_corrected = (x_b * cos_dt) - (y_b * sin_dt)
+    y_corrected = (x_b * sin_dt) + (y_b * cos_dt)
+    return x_corrected, y_corrected
 
-        def convert_radians_to_dms(self, rad_val):
-            total_degrees = decimal.Decimal(str(rad_val)) * self.RAD_TO_DEG_FACTOR
-            degrees = int(total_degrees)
-            remainder_minutes = (total_degrees - decimal.Decimal(degrees)) * decimal.Decimal('60')
-            minutes = int(remainder_minutes)
-            seconds = (remainder_minutes - decimal.Decimal(minutes)) * decimal.Decimal('60')
-            return degrees, minutes, seconds
+def calculate_mesh_distance_vector(x1, y1, x2, y2):
+    dx = decimal.Decimal(str(x2)) - decimal.Decimal(str(x1))
+    dy = decimal.Decimal(str(y2)) - decimal.Decimal(str(y1))
+    distance_squared = (dx ** 2) + (dy ** 2)
+    return calculate_high_precision_sqrt(distance_squared)
 
-    def run_automated_simulation(engine):
-        print("\n" + "=" * 72)
-        print("  RUNNING AUTOMATED SIMULATION PROFILE (v11.2 OMEGA)")
-        print("=" * 72)
-        simulated_node_telemetry = [3150, 1890, 1575, 630, 195]
-        is_stable, total_weight, dev, disc = engine.verify_node_load_balance(simulated_node_telemetry)
-        print(f"  [MYCELIUM] Active Node Matrix: {simulated_node_telemetry}")
-        print(f"  [STATUS]   Consensus Equilibrium: {'STABLE' if is_stable else 'UNSTABLE'}")
-        print(f"  [DIAGNOSTIC] Sigma Discrepantie-index: {disc}%")
+def convert_radians_to_dms(rad_val):
+    total_degrees = decimal.Decimal(str(rad_val)) * RAD_TO_DEG_FACTOR
+    degrees = int(total_degrees)
+    remainder_minutes = (total_degrees - decimal.Decimal(degrees)) * decimal.Decimal('60')
+    minutes = int(remainder_minutes)
+    seconds = (remainder_minutes - decimal.Decimal(minutes)) * decimal.Decimal('60')
+    return degrees, minutes, seconds
+
+def run_automated_simulation():
+    print("\n" + "=" * 72)
+    print("  RUNNING AUTOMATED SIMULATION PROFILE (v11.2 OMEGA)")
+    print("=" * 72)
+    simulated_node_telemetry = [3150, 1890, 1575, 630, 195]
+    is_stable, total_weight, dev, disc = verify_node_load_balance(simulated_node_telemetry)
+    print(f"  [MYCELIUM] Active Node Matrix: {simulated_node_telemetry}")
+    print(f"  [STATUS]   Consensus Equilibrium: {'STABLE' if is_stable else 'UNSTABLE'}")
+    print(f"  [DIAGNOSTIC] Sigma Discrepantie-index: {disc}%")
+    print("-" * 72)
+    base_x, base_y = "1.00000000000000000000000000000000000", "0.00000000000000000000000000000000000"
+    micro_offset = "0.0000000000123456789"
+    corr_x, corr_y = compute_diamond_rotation(base_x, base_y, micro_offset)
+    drift_distance = calculate_mesh_distance_vector(base_x, base_y, corr_x, corr_y)
+    print(f"  [GEOMETRY] Angular Displacement Triggered: {micro_offset} rad")
+    print(f"  [VECTOR]   Computed Linear Drift Distance:\n  {drift_distance}")
+    print("=" * 72)
+
+def run_manual_zumkeller_test():
+    print("\n" + "=" * 72)
+    print("  MANUAL ZUMKELLER LOAD BALANCE AUDIT & DISCREPANCY DETECTOR")
+    print("=" * 72)
+    print("  Enter node weights separated by commas. Example: 3150, 1890, 1575, 630, 195")
+    print("-" * 72)
+    user_input = input("  [INPUT] Enter weights: ")
+    try:
+        raw_splits = user_input.split(",")
+        is_stable, total_weight, deviation, discrepancy = verify_node_load_balance(raw_splits)
         print("-" * 72)
-        base_x, base_y = "1.00000000000000000000000000000000000", "0.00000000000000000000000000000000000"
-        micro_offset = "0.0000000000123456789"
-        corr_x, corr_y = engine.compute_diamond_rotation(base_x, base_y, micro_offset)
-        drift_distance = engine.calculate_mesh_distance_vector(base_x, base_y, corr_x, corr_y)
-        print(f"  [GEOMETRY] Angular Displacement Triggered: {micro_offset} rad")
-        print(f"  [VECTOR]   Computed Linear Drift Distance:\n  {drift_distance}")
-        print("=" * 72)
+        print(f"  [DATA] Total Sum: {total_weight} | Target Anchor: {TARGET_PARTITION_SUM}")
+        print(f"  [DATA] Deviation Amplitude: {deviation}")
+        print(f"  [DATA] Computed Discrepancy Index: {discrepancy}%")
+        if is_stable:
+            print("  [ALERT] STATUS: PERFECT HARMONIC BALANCE (Sincere Observer Approved)")
+        else:
+            print("  [ALERT] STATUS: HIGH-ENTROPY DRIFT DETECTED IN THE SUBSET")
+    except Exception as e:
+        print(f"  [ERROR] Invalid numerical chain parsing: {e}")
+    print("=" * 72)
 
-    def run_manual_zumkeller_test(engine):
-        print("\n" + "=" * 72)
-        print("  MANUAL ZUMKELLER LOAD BALANCE AUDIT & DISCREPANCY DETECTOR")
-        print("=" * 72)
-        print("  Enter node weights separated by commas. Example: 3150, 1890, 1575, 630, 195")
+def run_manual_diamond_test():
+    print("\n" + "=" * 72)
+    print("  MANUAL 70-DECIMAL DIAMOND GEOMETRY & ANGULAR CONVERSION")
+    print("=" * 72)
+    base_x, base_y = "1.00000000000000000000000000000000000", "0.00000000000000000000000000000000000"
+    user_offset = input("  [INPUT] Enter angular displacement (rad): ")
+    try:
+        print("  [COMPUTE] Synchronizing Taylor Matrices & Distance Vectors...")
+        clean_offset = user_offset.strip()
+        corr_x, corr_y = compute_diamond_rotation(base_x, base_y, clean_offset)
+        drift_dist = calculate_mesh_distance_vector(base_x, base_y, corr_x, corr_y)
+        deg, mins, secs = convert_radians_to_dms(clean_offset)
         print("-" * 72)
-        user_input = input("  [INPUT] Enter weights: ")
-        try:
-            raw_splits = user_input.split(",")
-            is_stable, total_weight, deviation, discrepancy = engine.verify_node_load_balance(raw_splits)
-            print("-" * 72)
-            print(f"  [DATA] Total Sum: {total_weight} | Target Anchor: {engine.TARGET_PARTITION_SUM}")
-            print(f"  [DATA] Deviation Amplitude: {deviation}")
-            print(f"  [DATA] Computed Discrepancy Index: {discrepancy}%")
-            if is_stable:
-                print("  [ALERT] STATUS: PERFECT HARMONIC BALANCE (Sincere Observer Approved)")
-            else:
-                print("  [ALERT] STATUS: HIGH-ENTROPY DRIFT DETECTED IN THE SUBSET")
-        except Exception as e:
-            print(f"  [ERROR] Invalid numerical chain parsing: {e}")
-        print("=" * 72)
+        print(f"  [CONVERSION] Ingedraaide hoek: {deg}° {mins}' {secs}\"")
+        print(f"  [DISTANCE]   Absolute netwerkverplaatsing (Drift):\n  {drift_dist}")
+        print(f"  [MATRIX X]   New Spatial Coordinate X:\n  {corr_x}")
+        print(f"  [MATRIX Y]   New Spatial Coordinate Y:\n  {corr_y}")
+    except Exception as e:
+        print(f"  [ERROR] Spatial transform interrupted: {e}")
+    print("=" * 72)
 
-    def run_manual_diamond_test(engine):
+def main_menu():
+    while True:
         print("\n" + "=" * 72)
-        print("  MANUAL 70-DECIMAL DIAMOND GEOMETRY & ANGULAR CONVERSION")
+        print("  SNIJDERS OMEGA PROTOCOL v11.2 | MASTER OPERATION ENGINE")
         print("=" * 72)
-        base_x, base_y = "1.00000000000000000000000000000000000", "0.00000000000000000000000000000000000"
-        user_offset = input("  [INPUT] Enter angular displacement (rad): ")
-        try:
-            print("  [COMPUTE] Synchronizing Taylor Matrices & Distance Vectors...")
-            clean_offset = user_offset.strip()
-            corr_x, corr_y = engine.compute_diamond_rotation(base_x, base_y, clean_offset)
-            drift_dist = engine.calculate_mesh_distance_vector(base_x, base_y, corr_x, corr_y)
-            deg, mins, secs = engine.convert_radians_to_dms(clean_offset)
-            print("-" * 72)
-            print(f"  [CONVERSION] Ingedraaide hoek: {deg}° {mins}' {secs}\"")
-            print(f"  [DISTANCE]   Absolute netwerkverplaatsing (Drift):\n  {drift_dist}")
-            print(f"  [MATRIX X]   New Spatial Coordinate X:\n  {corr_x}")
-            print(f"  [MATRIX Y]   New Spatial Coordinate Y:\n  {corr_y}")
-        except Exception as e:
-            print(f"  [ERROR] Spatial transform interrupted: {e}")
-        print("=" * 72)
-
-    def main_menu():
-        engine = SnijdersOmegaEngineV112()
-        while True:
-            print("\n" + "=" * 72)
-            print("  SNIJDERS OMEGA PROTOCOL v11.2 | MASTER OPERATION ENGINE")
+        print("  1. Run Automated Protocol Simulation Profile")
+        print("  2. Execute Manual Zumkeller Load Balance Audit")
+        print("  3. Compute Manual 70-Decimal Diamond Geometry Shift")
+        print("  4. Terminate Engine Core (Exit)")
+        print("-" * 72)
+        choice = input("  Select operation profile [1-4]: ").strip()
+        if choice == '1':
+            run_automated_simulation()
+        elif choice == '2':
+            run_manual_zumkeller_test()
+        elif choice == '3':
+            run_manual_diamond_test()
+        elif choice == '4':
+            print("\n  [STATUS] Clearing 70-decimal cache... Core Terminated. Tot ziens Miklos.")
             print("=" * 72)
-            print("  1. Run Automated Protocol Simulation Profile")
-            print("  2. Execute Manual Zumkeller Load Balance Audit")
-            print("  3. Compute Manual 70-Decimal Diamond Geometry Shift")
-            print("  4. Terminate Engine Core (Exit)")
-            print("-" * 72)
-            choice = input("  Select operation profile [1-4]: ").strip()
-            if choice == '1':
-                run_automated_simulation(engine)
-            elif choice == '2':
-                run_manual_zumkeller_test(engine)
-            elif choice == '3':
-                run_manual_diamond_test(engine)
-            elif choice == '4':
-                print("\n  [STATUS] Clearing 70-decimal cache... Core Terminated. Tot ziens Miklos.")
-                print("=" * 72)
-                break
-            else:
-                print("  [SYSTEM ALERT] Invalid entry.")
-            time.sleep(0.8)
+            break
+        else:
+            print("  [SYSTEM ALERT] Invalid entry.")
+        time.sleep(0.8)
 
-    if __name__ == "__main__":
-        main_menu()
+if __name__ == "__main__":
+    main_menu()
 
+
+    
 ## 9. Verification & Testing
 To execute the validation matrix:
 1. Copy the embedded source script directly into your local execution interface or mobile **Pydroid 3** application.
