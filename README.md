@@ -60,6 +60,11 @@ Standard thermodynamics models assume passive environmental decoherence. The Sni
 ## 8. Interactive High-Precision Python Core Engine
 
 Below is the complete, production-ready source architecture for the v11.2 Omega interactive simulation and validation core. This standalone implementation is optimized for flawless execution within mobile environments (such as Pydroid 3) and standard desktop setups.
+9. Verification & Testing
+​To execute the validation matrix:
+​Copy the complete source script inside the code block above directly into your local execution interface or mobile Pydroid 3 application.
+​Execute the initialization vector to launch the interactive management interface.
+​Select operational profiles 2 or 3 to perform manual audits against real-time node strings.
 
 ```python
 import decimal
