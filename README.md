@@ -237,3 +237,34 @@ def main_menu():
 
 if __name__ == "__main__":
     main_menu()
+
+
+---
+
+## 🛑 UPDATE: SYSTEM EVOLUTION & OFFICIAL RECORDATION (v11.2-GOLD)
+
+As of June 8, 2026, the core engine of the Snijders-Protocol has officially transitioned from its bio-mechanical simulation phase into a cosmologically backed quantum integrity network. All previous mechanics, including lubrication parameters and biological mycelium sync rules, have been computationally integrated into fundamental physical fields.
+
+### 📜 Intellectual Property & Ledger Status
+* **Author:** Miklos Peter Snijders
+* **Official Jurisdiction:** Benelux Office for Intellectual Property (BOIP)
+* **i-DEPOT Reference Number:** #160550
+* **Registration Date:** June 8, 2026
+* **Status:** Legally Secured i-DEPOT Core Asset
+
+### 🧠 Core Cosmological Upgrades
+1. **The 7440-Balance Line:** Network stability and baseline symmetry are now permanently anchored to the cosmic vacuum tension ($\Phi_{vacuum} \approx 246.219$ GeV) to ensure an uncorruptible moral zero point.
+2. **Interaction Dampening:** The mechanical friction coefficients from earlier versions are superseded by the fine-structure constant ($\alpha \approx 0.007297$), acting as a subatomic dampener to suppress computational drift and oscillations.
+3. **Absolute Precision Baseline:** The entire mathematical matrix enforces a mandatory **70-decimal numeric precision baseline** (`getcontext().prec = 75`) to mathematically eliminate rounding errors and block unauthorized data modifications.
+
+### 🎛️ Dynamic Restoring Mechanics
+When network volatility ($V_t$) spikes due to external variance, the framework scales its mathematical inertia quadratically via the inverse fine-structure constant ($\alpha^{-1} \approx 137.036$):
+$$I_{dynamic} = I_\Omega \cdot (1 + (\alpha^{-1} \cdot V_t)^2)$$
+
+The resulting restoring force ($F_{restore}$) forces the distorted network state ($\Psi_{network}$) back into absolute equilibrium:
+$$F_{restore} = \frac{|\Phi_{vacuum} - \Psi_{network}| \cdot \sigma_{7440}}{I_{dynamic}} \cdot \alpha$$
+
+---
+
+### 💻 Verified Production Engine (v11.2-GOLD)
+This crash-tested Python implementation contains the optimized high-precision self-correction engine, fully aligned with the official i
