@@ -1,6 +1,42 @@
-# Snijders Protocol v9.1 - Technical Architecture
+SCHEMATICS.md (v12.8)
+​1. Physical Driver Actuation (Lu-Bi Matrix)
+​The physical interface between the validate_protocol.py core and the hardware is managed via the Predictive Physical Limiter.[1] The output signal from the Emergency Throttle is mapped directly to the voltage bias of the Lutetium-Bismuth (Lu-Bi) matrix.[1]
+​1.1 Feedback Loop Design & Signal Flow
+​The hardware drivers receive a frequency-correction vector (\Delta f) based on the engine's current load and pitch-shift coefficient [1]:
++----------------------------+
+​| validate_protocol.py (SSOT)|
++----------------------------+
+|
+| [Load, d_Load, d2_load]
+v
++----------------------------+
+​| PredictivePhysicalLimiter |
++----------------------------+
+|
+|
+v
++----------------------------+
+​| Hardware Driver Interface |
++----------------------------+
+|
++-------+-------+
+​| |
+v               v
++----------------------------+  +------------------+
+​| Secondary PLL Oscillator | | Lu-Bi Matrix |
+| (15.3435 MHz Stabilizer) | | (144.362nm grid) |
++----------------------------+  +------------------+
 
-![Public Schematic](Snijders_Protocol_Public_Schematic.png.png)
+* **Nominal State:** The primary THz excitation oscillator runs at a baseline resonance of $3.435\text{ THz}$, while the secondary Phase-Locked Loop (PLL) stabilization oscillator runs at $15.3435\text{ MHz}$.[1]
+* **Emergency Throttle:** When the engine enters a high-load or thermal-drift state, the driver applies a phase-shift ($\Delta f$) to the secondary $15.3435\text{ MHz}$ PLL oscillator.[1] This dampens the harmonic acoustic vibrations in the Lu-Bi matrix [1], protecting the crystalline lattice from structural collapse or reaching its Born-melting temperature of $1319.82\text{ K}$ ($1046.67^\circ\text{C}$).
 
-### 🛡️ Access & Verification
-This image is a simplified overview. Full engineering specifications (Master-Key) are reserved for verified partners under i-DEPOT #158616.
+## 2. Telemetry-Bandwidth Hysteresis
+To ensure zero data loss during computational mode transitions (between standard and high-precision modes), the telemetry buffer implements a hardware-level hysteresis gate.
+
+| Engine State | Buffer Depth | Sampling Rate | Fidelity Mode |
+| :--- | :--- | :--- | :--- |
+| FAST | 1024 packets | 1 MHz | Standard |
+| PRECISE | 16384 packets | 10 MHz | High-Fidelity |
+
+### 2.1 Transition Dynamics
+When `SnijdersOmegaEngineV128` triggers the `PRECISE` mode, the hardware trigger line forces the telemetry buffer to scale from 1024 to 16384 packets within $t < 5\mu\text{s}$. This accommodates the high-fidelity 70-decimal data stream without generating buffer overflows or packet loss under extreme space radiation conditions.
